@@ -46,7 +46,7 @@ Para consumir dados do Twitter, não é necessário ter acesso aos servidores e 
  <p> </p>
  <img src="img/API twitter.png">
    <p> </p>
- <figcaption>Funcioamento da API.</figcaption>
+ <figcaption>Funcionamento da API.</figcaption>
  <p> </p>
  <p> </p>
 </div>
