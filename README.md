@@ -4,8 +4,6 @@
 
 <img align="right" width="100" height="100" src="img/twitter_icon.png">
 
-# Analisando conexões de perfis pessoais do Twitter
-
 <div style="display: inline-block;">
 <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"/> 
 <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white"/> 
