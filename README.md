@@ -1,1 +1,1 @@
-# Análise de tweets de perfis no Twitter
+# Análise de tweets em perfis no Twitter
