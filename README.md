@@ -171,7 +171,7 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
  <p> </p>
 </div>
 
-### <b>4.4.4 Etapa 2 - Assunto mais importante</b>
+### <b>4.4 Etapa 2 - Assunto mais importante</b>
 
 Para descobrir o assunto mais importante da rede do usuário mais influente seguimos a seguinte tática:
 
@@ -181,7 +181,7 @@ Para descobrir o assunto mais importante da rede do usuário mais influente segu
 4) São retiradas as palavras de menos importância (aparecem menos que 100 vezes) e as conexões que elas fazem;
 5) Plota-se o grafo.
 
-#### <b>4.4.4.1 Extração de Tweets</b>
+#### <b>4.4.1 Extração de Tweets</b>
 
 Extraímos o id usuário mais influente do arquivo "nodes.csv";
 
@@ -195,14 +195,14 @@ A partir dos ids encontrados (excluindo-se os que possuem twitter privado), obte
 
 https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2628-L2641
 
-#### <b>4.4.4.2 Tratamento de texto</b>
+#### <b>4.4.2 Tratamento de texto</b>
 
 Para não ser necessária a repetição da pesquisa, já que temos limite de pesquisas, salva-se os tweets em um arquivo, com uma sequência de caracteres(;;;) no final de cada tweet, que será utilizada para quebrar os tweets depois do tratamento. E como tratamento inicial, retira-se todos os emojis do tweet com a função [deEmojify](https://gist.github.com/slowkow/7a7f61f495e3dbb7e3d767f97bd7304b?permalink_comment_id=4071933#gistcomment-4071933).     
 A seguir fazemos o tratamento adicional de todos os tweets, removendo caracteres e links, e stopwords, utilizando as bibliotecas Regex e Nltk:
 
 https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2649-L2664
 
-#### <b>4.4.4.3 Construção do grafo</b>
+#### <b>4.4.3 Construção do grafo</b>
 
 Utilizando a sequência de caracteres definida, quebramos os tweets em um array (*data_set=texto.split("; ; ;")*). Em seguida começamos a criar nosso grafo:
 
