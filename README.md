@@ -99,3 +99,7 @@ Logo, de acordo com a Wikipédia,
 Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedia:
 
 > “A análise de redes sociais emergiu como uma técnica chave na sociologia moderna. Também ganhou seguidores significativos em antropologia, biologia, demografia, estudos de comunicação, economia, geografia, história, ciência da informação, estudos organizacionais, ciência política, saúde pública, psicologia social, estudos de desenvolvimento, sociolinguística e ciência da computação e agora é comumente disponível como uma ferramenta de consumo (consulte a lista de software SNA).”
+
+## 4. O Algoritmo 
+
+
