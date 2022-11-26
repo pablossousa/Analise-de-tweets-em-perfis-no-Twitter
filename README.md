@@ -161,7 +161,7 @@ Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lug
 
 #### 4.3.1 Criação de um aplicativo do Twitter e configurção das credenciais
 
-Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
+Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação.
 
 <div align="center">
  <p> </p>
@@ -170,6 +170,72 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
  <figcaption>Figura 5: Portal do desenvolvedor do Twitter. </figcaption>
  <p> </p>
 </div>
+
+### <b>4.4.4 Etapa 2 - Assunto mais importante</b>
+
+Para descobrir o assunto mais importante da rede do usuário mais influente seguimos a seguinte tática:
+
+1) Extraímos os tweets de todos os seguidores do Usuário mais influente;
+2) Tratamos esses tweets, de maneira a deixar somente palavras importantes;
+3) Construímos um grafo utilizando as palavras como nós, e as vezes qe se repetiram como tamanho dos nós. As arestas são feitas das conexões entre palavras em um tweet e o peso da aresta é derivado da quantidade de vezes que essa conexão aparece;
+4) São retiradas as palavras de menos importância (aparecem menos que 100 vezes) e as conexões que elas fazem;
+5) Plota-se o grafo.
+
+#### <b>4.4.4.1 Extração de Tweets</b>
+
+Extraímos o id usuário mais influente do arquivo "nodes.csv";
+
+https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2617
+
+Cria-se uma lista de seguidores e ela é preenchida com os seguidores do usuário mais influente;
+
+https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2619-L2626
+
+A partir dos ids encontrados (excluindo-se os que possuem twitter privado), obtemos os 20 tweets mais recentes dos mesmos (a quantidade foi estabelecida como consenso geral entre o grupo de média de tweets por dia de um usuário);
+
+https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2628-L2641
+
+#### <b>4.4.4.2 Tratamento de texto</b>
+
+Para não ser necessária a repetição da pesquisa, já que temos limite de pesquisas, salva-se os tweets em um arquivo, com uma sequência de caracteres(;;;) no final de cada tweet, que será utilizada para quebrar os tweets depois do tratamento. E como tratamento inicial, retira-se todos os emojis do tweet com a função [deEmojify](https://gist.github.com/slowkow/7a7f61f495e3dbb7e3d767f97bd7304b?permalink_comment_id=4071933#gistcomment-4071933).     
+A seguir fazemos o tratamento adicional de todos os tweets, removendo caracteres e links, e stopwords, utilizando as bibliotecas Regex e Nltk:
+
+https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2649-L2664
+
+#### <b>4.4.4.3 Construção do grafo</b>
+
+Utilizando a sequência de caracteres definida, quebramos os tweets em um array (*data_set=texto.split("; ; ;")*). Em seguida começamos a criar nosso grafo:
+
+https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2564-L2599
+
+A classe possui as seguintes funções:
+
+ - <font size="3"><b> \_\_init\_\_:</b></font> Responsável por criar os dicionários(serão usados como Hash) para armazenar os nós(Palavras e repetições) e as arestas(ligações de palavras e repetições);
+ - <font size="3"><b>addNode(palavra):</b></font> Adiciona 10 a posição de chave **palavra** do dicionário de nós, toda vez que esta **palavra** aparece;
+ - <font size="3"><b>addEdge(a,b):</b></font> Utilizando um *frozenset(a,b)* como chave(qualquer ordem das duas palavras será considerada igual), adiciona 1 a posição com esta chave toda vez que as palavras aparecem juntas;
+ - <font size="3"><b>visualize:</b></font> Responsável por desenhar o grafo.
+
+Para cada tweet presente na lista (*data_set*) percorremos o mesmo palavra por palavra, adicionando cada palavra como nó (**addNode()**) e cada par de palavra prensente no tweet como aresta (**addEdge()**);
+
+https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2668-L2674
+
+A seguir utilizamos a função visualize da classe de grafo, essa função funciona da seguinte maneira:
+
+ 1) Remove nós que possuem valores abaixo de 1000 (aparecem menos de 100 vezes), e removem as arestas que possuem esses nós
+
+ https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2578-L2582
+
+ 2) Cria as arestas no estilo da biblioteca networkx e adiciona em ordem, os grafos da classe e as arestas criadas a partir das arestas da classe
+
+ https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2583-L2589
+
+ 3) Ajusta o layout da grafo (posicionamento, tamanho de nós, label de aresta)
+
+ https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2590-L2594
+
+ 4) Plota o grafo
+
+ https://github.com/barbrina/Twitter-Data-Analysis/blob/ddf123a492798b6a2c42deed7efaaea0e50ed2af/Final/Etapa2.py#L2595-L2599
 
 
 ## 5. Conclusão
