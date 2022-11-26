@@ -102,4 +102,10 @@ Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedi
 
 ## 4. O Algoritmo 
 
+### 3.1 Problema Proposto 
 
+Neste trabalho o objetivo é aplicar as estruturas em grafos para solucionar um problema real qualquer. Cada dupla de alunos deve escolher em literatura uma das áreas de aplicação do tema e propor uma solução baseada nos conceitos apresentados. Essa solução pode ser realizada utilizando C, C++ e/ou Python. O objetivo e mostrar a atuação de algoritmos clássicos em grafos na resolução de problemas emergentes. Alguns temas para inspiração são: Análise de rede social, rotas de entregas, análise de trafego (i.e., carros, pacotes na internet, etc), mínima quantidade de saltos em redes, teoria dos jogos, elaboração de horário vs rodízio de salas, envoltória convexa (do inglês, convex hull), etc.
+
+## 5. Conclusão
+
+## 6. Compilação e Execução 
