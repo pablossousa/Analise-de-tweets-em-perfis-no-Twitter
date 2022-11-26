@@ -20,7 +20,7 @@ A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVI
  <p> </p>
  <img src="img/cidade.webp">
   <p> </p>
- <figcaption>Configuração das pontes na cidade de Königsberg</figcaption>
+ <figcaption>Figura 1: Configuração das pontes na cidade de Königsberg</figcaption>
  <p> </p>
 </div>
 
@@ -28,15 +28,36 @@ A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVI
 
 A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema, ou seja, remover as cidades próximas, ruas conectadas e deixou apenas o que precisava em vértices que se ligavam baseado nas rotas possíveis. Isso permitiu a ele formular o problema de forma abstrata, iniciando o que temos hoje em teoria dos grafos.
 
+<div align="center">
+ <p> </p>
+ <img src="img/grafos ponte.webp">
+  <p> </p>
+ <figcaption>Figura 2: Visualização de grafos utilizando o problema das 7 pontes de Konigsberg. </figcaption>
+ <p> </p>
+</div>
+
 Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente. Suponha que queiramos descobrir o assunto do momento de um determinado grupo de pessoas. Esse grupo de pessoas será baseado nos seguidores de um perfil específico e também nos seguidores destes seguidores. Dessa forma, podemos entender os tópicos que estão em alta naquele momento dentro de uma bolha de seguidores.
 
 <div align="center">
  <p> </p>
  <img src="img/ilustracao.png">
   <p> </p>
- <figcaption>Ilustração da rede de seguidores</figcaption>
+ <figcaption>Figura 3: Ilustração da rede de seguidores</figcaption>
  <p> </p>
 </div>
+
+### 1.1 Networkx
+
+NetworkX é uma biblioteca Python para estudar grafos e redes. Esta é uma demonstração de código para mostrar como usamos o NetworkX para conduzir a comparação de subgráficos e manipulamos os parâmetros para desenhar os grafos.
+
+Grafos em networkX podem ser criados de algumas maneiras diferentes:
+
+- Podemos carregar um grafo de um arquivo contendo uma lista de adjacências.
+- Podemos carregar um grafo de um arquivo contendo uma lista de arestas (edge list).
+- Podemos criar um grafo a partir de uma matriz de adjacência.
+- Podemos criar um gráfico a partir de um dataframe do pandas.
+- Podemos criar um grafo vazio e adicionar os vértices e arestas um a um ou a partir de uma lista.
+- Finalmente, alguns gráficos especiais (gráficos completos, gráficos bipartidos completos, …) podem ser criados usando funções especiais.
 
 ## 2. Twitter
 
@@ -55,7 +76,7 @@ Para consumir dados do Twitter, não é necessário ter acesso aos servidores e 
  <p> </p>
  <img src="img/API twitter.png">
    <p> </p>
- <figcaption>Funcionamento da API.</figcaption>
+ <figcaption>Figura 4: Funcionamento da API.</figcaption>
  <p> </p>
  <p> </p>
 </div>
@@ -120,6 +141,24 @@ pip3 install nltk
 
 nltk.download('stopwords')
 nltk.download('punkt')
+```
+
+### 4.3 Estrutura do algoritmo
+
+Irei explicar as etapas que segui para extrair dados do Twitter. Em primeiro lugar, você deve obter as credenciais da API do Twitter no site do desenvolvedor do Twitter, que são a chave da API, a chave secreta da API, o token de acesso e o segredo do token de acesso.
+
+#### 4.3.1 Criação de um aplicativo do Twitter e configurção das credenciais
+
+Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter. Para usar a API do Twitter, primeiro precisa-se registrar como desenvolvedor do Twitter, no site dos desenvolvedores. Uma vez registrado, e necessário criar um aplicativo do Twitter que irá configurar um monte de credenciais: essas credenciais serão usadas posteriormente pela biblioteca Tweepy para autenticação. Visto que as credenciais são pessoais, neste trabalho **EXPLICAR AQUI**.
+
+<div align="center">
+ <p> </p>
+ <img src="img/twitter - API.png">
+  <p> </p>
+ <figcaption>Figura 5: Portal do desenvolvedor do Twitter. </figcaption>
+ <p> </p>
+</div>
+
 
 ## 5. Conclusão
 
