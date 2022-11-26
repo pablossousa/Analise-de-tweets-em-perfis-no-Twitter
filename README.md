@@ -121,11 +121,22 @@ Ele entrou em praticamente todos os campos - novamente, de acordo com a Wikipedi
 
 > “A análise de redes sociais emergiu como uma técnica chave na sociologia moderna. Também ganhou seguidores significativos em antropologia, biologia, demografia, estudos de comunicação, economia, geografia, história, ciência da informação, estudos organizacionais, ciência política, saúde pública, psicologia social, estudos de desenvolvimento, sociolinguística e ciência da computação e agora é comumente disponível como uma ferramenta de consumo (consulte a lista de software SNA).”
 
-## 4. O Algoritmo 
+## 4. O Algoritmo
 
 ### 4.1 Problema Proposto 
 
 Neste trabalho o objetivo é aplicar as estruturas em grafos para solucionar um problema real qualquer. Cada dupla de alunos deve escolher em literatura uma das áreas de aplicação do tema e propor uma solução baseada nos conceitos apresentados. Essa solução pode ser realizada utilizando C, C++ e/ou Python. O objetivo e mostrar a atuação de algoritmos clássicos em grafos na resolução de problemas emergentes. Alguns temas para inspiração são: Análise de rede social, rotas de entregas, análise de trafego (i.e., carros, pacotes na internet, etc), mínima quantidade de saltos em redes, teoria dos jogos, elaboração de horário vs rodízio de salas, envoltória convexa (do inglês, convex hull), etc.
+
+Desta forma, o seguinte trabalho consiste em:
+
+1) Usar o Tweepy para raspar o Twitter para todos os meus seguidores e (a maioria) de seus seguidores;
+2) Criar um DataFrame pandas de todas essas conexões;
+3) Usar o NetworkX para extrair uma rede desses dados e executar algumas análises básicas de rede;
+4) Visualizar a rede no Gephi.
+5) A partir do usuário com maior numero de conexões, extrair os 20 tweets mais recentes de cada um de seus seguidores;
+6) Tratar estes tweets utilizando regex, codecs e nltk, para respectivamente, excluir dados estranhos(pontuação, espaço duplo, linha vazia, emojis, links, etc), salvar com codificação utf-8(manter acentos) e remover stopwords;
+7) Utilizando os tweets tratados, criamos nós com palavras únicas, e ligamos essas palavras através de arestas com as outras palavras do tweet;
+8) A cada repetição de palavra e aresta adicionamos um valor ao item referente a estes, e no final plotamos o grafo usando o matplotlib.
 
 ### 4.2 Instalação
 
@@ -133,11 +144,13 @@ Para rodar este código, é necessário instalar as bibliotecas a seguir.
 
 ```
 pip3 install networkx
+pip3 install codecs
+pip3 install nltk
+nltk.download('stopwords')
 pip3 install tweepy
 pip3 install community
 pip3 install python-louvain
 pip3 install ipython
-pip3 install nltk
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -163,3 +176,4 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
 ## 5. Conclusão
 
 ## 6. Compilação e Execução 
+
