@@ -146,7 +146,6 @@ Para rodar este código, é necessário instalar as bibliotecas a seguir.
 pip3 install networkx
 pip3 install codecs
 pip3 install nltk
-nltk.download('stopwords')
 pip3 install tweepy
 pip3 install community
 pip3 install python-louvain
