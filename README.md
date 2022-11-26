@@ -171,6 +171,25 @@ Para poder reproduzir as etapas a seguir é necessário ter uma conta no Twitter
  <p> </p>
 </div>
 
+#### 4.3.2 Conexão à API do Twitter
+
+Para começar, constrói-se uma rede usando minha conta pessoal no Twitter (@_Pablitoss_). Para fazer isso, inicia-se com uma lista de todos os seguidores (atualmente 47 seguidores). Em seguida, obtém-se todos os seguidores dessas 47 contas. Para economizar tempo, para contas com mais de 5.000 seguidores, irá se raspar apenas as primeiras 5.000 contas.
+
+Primeiro, importa-se os pacotes Tweepy e Pandas.
+
+https://github.com/barbrina/AEDs-II/blob/7d3954f73d13c52d913bbdebae227a7f303ae8b2/Analisando%20conex%C3%B5es%20do%20Twitter/src/twitter.py#L5-L6
+
+Em seguida, insere-se a credenciais da API do Twitter retiradas na sessão **Criação de um aplicativo do Twitter e configurção das credenciais**.
+
+```
+consumer_key = info['API_ACCESS']
+consumer_secret = info['API_ACCESS_SECRET']
+access_key = info['ACCESS_TOKEN']
+access_secret = info['ACCESS_TOKEN_SECRET']
+```
+
+Com o Tweepy, poderá ser usada essas credenciais para conectar à API do Twitter e começar a baixar os dados. O código a seguir usa apenas as credenciais inseridas acima para se conectar a ela. Como irei fazer o download de grandes conjuntos de dados, é importante especificar alguns parâmetros quando inicializarei a API. Definimos ‘wait_on_rate_limit’ como True. Existem limites de taxa ao baixar dados do Twitter - só se pode fazer um número limitado de solicitações de download para a API em um determinado período de tempo. Ao definir esse parâmetro como True, não interromperei a conexão com a API quando atingirmos esses limites. Em vez disso, esperarei até que o tempo limite termine e eu possa continuar baixando os dados.
+
 ### <b>4.4 Etapa 2 - Assunto mais importante</b>
 
 Para descobrir o assunto mais importante da rede do usuário mais influente seguimos a seguinte tática:
