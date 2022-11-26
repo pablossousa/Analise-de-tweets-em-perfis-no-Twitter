@@ -20,7 +20,7 @@ A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVI
  <p> </p>
  <img src="img/cidade.webp">
   <p> </p>
- <figcaption>Configuração das pontes na cidade de Königsberg. </figcaption>
+ <figcaption>Configuração das pontes na cidade de Königsberg</figcaption>
  <p> </p>
 </div>
 
@@ -29,6 +29,14 @@ A ideia básica de grafos surgiu com o matemático Leonhard Euler no século XVI
 A solução de Euler foi primeiro remover tudo que fosse irrelevante ao problema, ou seja, remover as cidades próximas, ruas conectadas e deixou apenas o que precisava em vértices que se ligavam baseado nas rotas possíveis. Isso permitiu a ele formular o problema de forma abstrata, iniciando o que temos hoje em teoria dos grafos.
 
 Por que é necessário saber teoria dos grafos? Para responder esta pergunta, utilizaremos um exemplo de aplicação muito comum atualmente. Suponha que queiramos descobrir o assunto do momento de um determinado grupo de pessoas. Esse grupo de pessoas será baseado nos seguidores de um perfil específico e também nos seguidores destes seguidores. Dessa forma, podemos entender os tópicos que estão em alta naquele momento dentro de uma bolha de seguidores.
+
+<div align="center">
+ <p> </p>
+ <img src="img/ilustracao.png">
+  <p> </p>
+ <figcaption>Ilustração da rede de seguidores</figcaption>
+ <p> </p>
+</div>
 
 ## 2. Twitter
 
